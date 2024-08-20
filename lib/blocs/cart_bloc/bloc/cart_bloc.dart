@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'dart:convert';
+// import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:ecom/models/product_model.dart';
 import 'package:meta/meta.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';

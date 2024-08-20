@@ -60,7 +60,7 @@ class ProductDetailScreen extends StatelessWidget {
       ),
       body: Container(
         padding: const EdgeInsets.only(top: 10),
-        color: Colors.amber,
+        color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -108,7 +108,23 @@ class ProductDetailScreen extends StatelessWidget {
                   ),
                 );
               },
-              child: Text('Add to Cart'),
+              child: const Text('Add to Cart'),
+            ),
+            SizedBox(height: Get.height * 0.01),
+            ElevatedButton(
+              onPressed: () {
+                // log('${product.name} added to cart');
+                log('${product.name} ready to buy');
+                context.read<CartBloc>().add(AddToCartEvent(product));
+                // ScaffoldMessenger.of(context).showSnackBar(
+                //   const SnackBar(
+                //     duration: Duration(seconds: 1),
+                //     content: Text('Product added to cart'),
+                //     backgroundColor: Colors.green,
+                //   ),
+                // );
+              },
+              child: const Text('Buy Now'),
             ),
           ],
         ),
