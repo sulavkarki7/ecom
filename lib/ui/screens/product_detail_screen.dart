@@ -58,75 +58,92 @@ class ProductDetailScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        padding: const EdgeInsets.only(top: 10),
-        color: Colors.white,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Image.network(product.imageUrl, height: 300),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 30.0,
-                vertical: 10.0,
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.only(top: 10),
+          color: Colors.white,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Image.network(product.imageUrl, height: 300),
               ),
-              child: Text(
-                textAlign: TextAlign.center,
-                product.name,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black87,
-                  // letterSpacing: 1.1,
-                  // wordSpacing: 1.2,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 10.0,
+                ),
+                child: Text(
+                  textAlign: TextAlign.center,
+                  product.name,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black87,
+                    // letterSpacing: 1.1,
+                    // wordSpacing: 1.2,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: Get.height * 0.02),
-            Text(
-              '\$${product.price}',
-              style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.grey[700]),
-            ),
-            SizedBox(height: Get.height * 0.03),
-            ElevatedButton(
-              onPressed: () {
-                // log('${product.name} added to cart');
-                log('${product.name} added to cart');
-                context.read<CartBloc>().add(AddToCartEvent(product));
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    duration: Duration(seconds: 1),
-                    content: Text('Product added to cart'),
-                    backgroundColor: Colors.green,
-                  ),
-                );
-              },
-              child: const Text('Add to Cart'),
-            ),
-            SizedBox(height: Get.height * 0.01),
-            ElevatedButton(
-              onPressed: () {
-                // log('${product.name} added to cart');
-                log('${product.name} ready to buy');
-                context.read<CartBloc>().add(AddToCartEvent(product));
-                // ScaffoldMessenger.of(context).showSnackBar(
-                //   const SnackBar(
-                //     duration: Duration(seconds: 1),
-                //     content: Text('Product added to cart'),
-                //     backgroundColor: Colors.green,
-                //   ),
-                // );
-              },
-              child: const Text('Buy Now'),
-            ),
-          ],
+              SizedBox(height: Get.height * 0.02),
+              Text(
+                '\$${product.price}',
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.grey[700]),
+              ),
+              SizedBox(height: Get.height * 0.03),
+              ElevatedButton(
+                onPressed: () {
+                  // log('${product.name} added to cart');
+                  log('${product.name} added to cart');
+                  context.read<CartBloc>().add(AddToCartEvent(product));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      duration: Duration(seconds: 1),
+                      content: Text('Product added to cart'),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
+                },
+                child: const Text('Add to Cart'),
+              ),
+              SizedBox(height: Get.height * 0.01),
+              ElevatedButton(
+                onPressed: () {
+                  // log('${product.name} added to cart');
+                  log('${product.name} ready to buy');
+                  context.read<CartBloc>().add(AddToCartEvent(product));
+                  // ScaffoldMessenger.of(context).showSnackBar(
+                  //   const SnackBar(
+                  //     duration: Duration(seconds: 1),
+                  //     content: Text('Product added to cart'),
+                  //     backgroundColor: Colors.green,
+                  //   ),
+                  // );
+                },
+                child: const Text('Buy Now'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  // // log('${product.name} added to cart');
+                  // log('${product.name} ready to buy');
+                  // context.read<CartBloc>().add(AddToCartEvent(product));
+                  // ScaffoldMessenger.of(context).showSnackBar(
+                  //   const SnackBar(
+                  //     duration: Duration(seconds: 1),
+                  //     content: Text('Product added to cart'),
+                  //     backgroundColor: Colors.green,
+                  //   ),
+                  // );
+                },
+                child: const Text('More Details'),
+              ),
+            ],
+          ),
         ),
       ),
     );
