@@ -95,7 +95,10 @@ class CartScreen extends StatelessWidget {
             }
 
             return const Center(
-              child: Text('No products in cart'),
+              child: Text(
+                'No products in cart',
+                style: TextStyle(fontSize: 20, color: Colors.red),
+              ),
             );
           },
         ));
