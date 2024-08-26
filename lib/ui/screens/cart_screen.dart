@@ -13,6 +13,7 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.teal[50],
         appBar: AppBar(
+          surfaceTintColor: Colors.blue.shade500,
           toolbarHeight: 80,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
