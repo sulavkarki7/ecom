@@ -1,3 +1,4 @@
+import 'package:ecom/base.dart';
 import 'package:ecom/blocs/cart_bloc/bloc/cart_bloc.dart';
 import 'package:ecom/blocs/product_bloc/bloc/product_bloc.dart';
 import 'package:ecom/repositories/product_repository.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         title: 'Demo Ecommerce',
-        home: ProductListScreen(),
+        home: const BaseScreen(),
       ),
     );
   }
