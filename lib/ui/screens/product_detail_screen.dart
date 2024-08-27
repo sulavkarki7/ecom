@@ -91,7 +91,7 @@ class ProductDetailScreen extends StatelessWidget {
               Text(
                 '\$${product.price}',
                 style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: Colors.grey[700]),
               ),
@@ -129,16 +129,16 @@ class ProductDetailScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // // log('${product.name} added to cart');
-                  // log('${product.name} ready to buy');
-                  // context.read<CartBloc>().add(AddToCartEvent(product));
-                  // ScaffoldMessenger.of(context).showSnackBar(
-                  //   const SnackBar(
-                  //     duration: Duration(seconds: 1),
-                  //     content: Text('Product added to cart'),
-                  //     backgroundColor: Colors.green,
-                  //   ),
-                  // );
+                  // log('${product.name} added to cart');
+                  log('${product.name} ready to buy');
+                  context.read<CartBloc>().add(AddToCartEvent(product));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      duration: Duration(seconds: 1),
+                      content: Text('Product added to cart'),
+                      backgroundColor: Colors.green,
+                    ),
+                  );
                 },
                 child: const Text('More Details'),
               ),
