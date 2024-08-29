@@ -30,16 +30,24 @@ class ProfileScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              CircleAvatar(
+                radius: 50,
+                backgroundColor: Colors.blue.shade100,
+                child:
+                    Icon(Icons.person, size: 50, color: Colors.blue.shade700),
+              ),
+              const SizedBox(height: 20),
               Text(
                 name,
-                style: TextStyle(
-                  fontSize: 22,
+                style: const TextStyle(
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Colors.black87,
                 ),
               ),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               Text(
                 email,
                 style: TextStyle(
@@ -47,47 +55,80 @@ class ProfileScreen extends StatelessWidget {
                   color: Colors.grey[700],
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 30),
+              ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.edit),
+                label: const Text('Edit Profile'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue.shade300,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Divider(),
               ListTile(
-                leading: Icon(Icons.edit, color: Colors.blue),
-                title: Text('Edit Profile'),
+                leading: const Icon(Icons.history, color: Colors.blue),
+                title: const Text('Order History'),
                 onTap: () {},
               ),
-              Divider(),
+              const Divider(),
               ListTile(
-                leading: Icon(Icons.history, color: Colors.blue),
-                title: Text('Order History'),
+                leading: const Icon(Icons.favorite, color: Colors.blue),
+                title: const Text('Wishlist'),
                 onTap: () {},
               ),
-              Divider(),
+              const Divider(),
               ListTile(
-                leading: Icon(Icons.favorite, color: Colors.blue),
-                title: Text('Wishlist'),
+                leading: const Icon(Icons.payment, color: Colors.blue),
+                title: const Text('Payment Methods'),
                 onTap: () {},
               ),
-              Divider(),
+              const Divider(),
               ListTile(
-                leading: Icon(Icons.payment, color: Colors.blue),
-                title: Text('Payment Methods'),
+                leading: const Icon(Icons.location_on, color: Colors.blue),
+                title: const Text('Address Book'),
                 onTap: () {},
               ),
-              Divider(),
+              const Divider(),
               ListTile(
-                leading: Icon(Icons.location_on, color: Colors.blue),
-                title: Text('Address Book'),
-                onTap: () {},
-              ),
-              Divider(),
-              ListTile(
-                leading: Icon(Icons.logout, color: Colors.red),
-                title: Text('Logout'),
+                leading: const Icon(Icons.logout, color: Colors.red),
+                title: const Text('Logout'),
                 onTap: () {
-                  Navigator.pop(context);
+                  _showLogoutConfirmation(context);
                 },
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void _showLogoutConfirmation(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Logout'),
+        content: const Text('Are you sure you want to logout?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Cancel', style: TextStyle(color: Colors.grey)),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.pop(context);
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red,
+            ),
+            child: const Text('Logout'),
+          ),
+        ],
       ),
     );
   }
