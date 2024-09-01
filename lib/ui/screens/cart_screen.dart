@@ -46,49 +46,52 @@ class CartScreen extends StatelessWidget {
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: ListTile(
-                          title: Text(
-                            product.name,
-                            style: const TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.black87,
-                              letterSpacing: 1.1,
-                              wordSpacing: 1.2,
+                        child: Card(
+                          elevation: 5,
+                          child: ListTile(
+                            title: Text(
+                              product.name,
+                              style: const TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black87,
+                                letterSpacing: 1.1,
+                                wordSpacing: 1.2,
+                              ),
                             ),
-                          ),
-                          subtitle: Text(
-                            '\$${product.price}',
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.grey[700]),
-                          ),
-                          trailing: IconButton(
-                            icon: const Icon(Icons.delete),
-                            onPressed: () {
-                              log('${product.name} removed from cart');
-                              context
-                                  .read<CartBloc>()
-                                  .add(RemoveFromCartEvent(product));
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  duration: Duration(seconds: 1),
-                                  content: Text('Product removed from cart'),
-                                  backgroundColor: Colors.red,
+                            subtitle: Text(
+                              '\$${product.price}',
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.grey[700]),
+                            ),
+                            trailing: IconButton(
+                              icon: const Icon(Icons.delete),
+                              onPressed: () {
+                                log('${product.name} removed from cart');
+                                context
+                                    .read<CartBloc>()
+                                    .add(RemoveFromCartEvent(product));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    duration: Duration(seconds: 1),
+                                    content: Text('Product removed from cart'),
+                                    backgroundColor: Colors.red,
+                                  ),
+                                );
+                              },
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      ProductDetailScreen(product: product),
                                 ),
                               );
                             },
                           ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    ProductDetailScreen(product: product),
-                              ),
-                            );
-                          },
                         ),
                       ),
                     );
